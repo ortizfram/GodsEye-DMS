@@ -7,7 +7,14 @@
 <main class="container">
     <h1 class="display-5 text-center custom-font">Worspace 💼</h1>
     <section class="card card-body">
-        x
+        {% if elements %}
+        {% for element in elements %}
+        <h3>{{ element.title }}</h3>
+        <p>{{ element.content }}</p>
+        {% endfor %}
+        {% else %}
+        <p>{{ message }}</p>
+        {% endif %}
     </section>
 </main>
 {% endblock%}
