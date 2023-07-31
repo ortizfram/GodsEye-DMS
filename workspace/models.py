@@ -15,7 +15,7 @@ class WorkspaceSetting (models.Model):
 
 class Element (models.Model):
     title = models.CharField(max_length=100)
-    content =  models.CharField()
+    content =  models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True) 
     favourite = models.BooleanField(default=False, blank=True)
