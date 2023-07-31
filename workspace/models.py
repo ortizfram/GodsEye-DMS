@@ -15,11 +15,13 @@ class WorkspaceSetting (models.Model):
 
 class Element (models.Model):
     title = models.CharField(max_length=100)
-    content =  models.TextField()
+    content =  models.TextField(blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True) 
     favourite = models.BooleanField(default=False, blank=True)
 
+    # ForeignKey for the relationship
+    workspace = models.ForeignKey(Workspace, on_delete=models.CASCADE)  
         # To see element titles in admin ORM 
     def __str__(self):
         return self.title
