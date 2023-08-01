@@ -1,19 +1,9 @@
-from django.shortcuts import render
-from .models import Element
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login, logout, authenticate
 
 def home(request):
     return render(request, "home.html")
 
-def workspace(request):
-    # Fetch all elements from the database
-    elements = Element.objects.all()
-
-    # Check if there are any elements
-    if elements:
-        context = {'elements': elements}
-    else:
-        # Custom string when no elements exist
-        context = {'message': 'No elements yet.'}
-
-    # Pass context to the template
-    return render(request, "workspace.html", context)

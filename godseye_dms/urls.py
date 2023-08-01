@@ -21,5 +21,4 @@ from workspace import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", views.home, name="home"),
-    path("workspace/", views.workspace, name="workspace"),
 ]
