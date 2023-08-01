@@ -2,19 +2,22 @@
 
 {% load static %}
 
-{% block content%}
-
+{% block content %}
 <main class="container">
-    <h1 class="display-5 text-center custom-font">Worspace 💼</h1>
+    <h1 class="display-5 text-center custom-font">Workspaces 💼</h1>
+    {% if workspaces %}
+    {% for workspace in workspaces %}
     <section class="card card-body">
-        {% if elements %}
-        {% for element in elements %}
-        <h3>{{ element.title }}</h3>
-        <p>{{ element.content }}</p>
-        {% endfor %}
-        {% else %}
-        <p>{{ message }}</p>
+        <h3>{{ workspace.title }}</h3>
+        {% if workspace.logo %}
+        <img src="{{ workspace.logo.url }}" alt="Workspace Logo">
         {% endif %}
+        <p>Bookmarked: {% if workspace.bookmarked %}Yes{% else %}No{% endif %}</p>
+        <p>Number of Elements: {{ workspace.element_count }}</p>
     </section>
+    {% endfor %}
+    {% else %}
+    <p>No workspaces found.</p>
+    {% endif %}
 </main>
-{% endblock%}
+{% endblock %}
