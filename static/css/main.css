@@ -1,3 +1,19 @@
 .custom-font {
   font-family: "Shrikhand", cursive, sans-serif;
 }
+
+/* worspace logo style */
+/* ======================*/
+.logo-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; /* Adjust the logo wrapper height as needed */
+  overflow: hidden;
+}
+
+.workspace-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
