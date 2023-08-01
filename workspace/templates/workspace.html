@@ -5,10 +5,11 @@
 {% block content %}
 <main class="container">
     <h1 class="display-5 text-center custom-font">Workspaces 💼</h1>
+    <p class="card card-body">searchbar ...</p>
     {% if workspaces %}
     {% for workspace in workspaces %}
     <a class="card card-body" href="#">
-        <div class="row">
+        <div class="row d-flex align-items-center">
             <div class="col-2">
                 {% if workspace.logo %}
                 <img src="{{ workspace.logo.url }}" class="workspace-logo-icon" alt="Workspace Logo">

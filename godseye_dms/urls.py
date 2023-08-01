@@ -21,10 +21,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
     path("", views.home, name="home"),
-    path('workspaces/', views.workspace_list, name='workspace_list'),
-    path('workspaces/create/', views.create_workspace, name='create_workspace'),
+    path("workspaces/", views.workspace_list, name="workspaces"),
 ]
 
 # Only enable serving media files during development
