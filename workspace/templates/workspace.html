@@ -12,7 +12,9 @@
         <div class="row d-flex align-items-center">
             <div class="col-2">
                 {% if workspace.logo %}
-                <img src="{{ workspace.logo.url }}" class="workspace-logo-icon" alt="Workspace Logo">
+                <div class="logo-wrapper">
+                    <img src="{{ workspace.logo.url }}" class="workspace-logo" alt="Workspace Logo">
+                </div>
                 {% endif %}
             </div>
             <div class="col">
