@@ -23,6 +23,6 @@ def create_workspace(request):
         workspace = Workspace(title=title, logo=logo)
         workspace.save()
 
-        return JsonResponse({"status":"success"})
+        return redirect("workspaces")
     else:
         return JsonResponse({"status":"error", "message":"Invalid request method."})

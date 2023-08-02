@@ -6,26 +6,56 @@
 <main class="container">
     <h1 class="display-5 text-center custom-font">Workspaces 💼</h1>
     <p class="card card-body">searchbar ...</p>
-    {% if workspaces %}
-    {% for workspace in workspaces %}
-    <a class="card card-body" href="#">
-        <div class="row d-flex align-items-center">
-            <div class="col-2">
-                {% if workspace.logo %}
-                <div class="logo-wrapper">
-                    <img src="{{ workspace.logo.url }}" class="workspace-logo" alt="Workspace Logo">
-                </div>
-                {% endif %}
-            </div>
-            <div class="col">
-                <h3>{{ workspace.title }}</h3>
-                <p>Bookmarked: {% if workspace.bookmarked %}Yes{% else %}No{% endif %}</p>
-            </div>
+    <div class="grid d-flex gap-3">
+        <div class="row">
+            <!-- Button show/hide workspace creation form -->
+            <button id="toggleCreateFormBtn" class="btn btn-secondary">
+                +
+            </button>
+            <!-- Button show/hide workspace Edit form -->
+            <button href="#" class="btn btn-secondary">Edit</button>
         </div>
-    </a>
-    {% endfor %}
+    </div>
+
+    <!-- ||| workspace creation form -->
+    <div id="createWorkspaceFormContainer" style="display: none;">
+        {% include 'workspace_form.html' %}
+    </div>
+
+    <!-- ||| Render workspaces -->
+    {% if workspaces %}
+    <div class="row">
+        {% for workspace in workspaces %}
+        <div class="col-12 col-sm-6 col-md-4">
+            <a class="card card-body" href="#">
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-2">
+                        {% if workspace.logo %}
+                        <div class="logo-wrapper text-center">
+                            <!-- Center the logo on smaller screens using 'text-center' -->
+                            <img src="{{ workspace.logo.url }}" class="p-3 workspace-logo" alt="Workspace Logo">
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-12 col-md text-center"> <!-- Center the text on all screen sizes -->
+                        <h3>{{ workspace.title }}</h3>
+                        <p class="bookmarked-info">Bookmarked: {% if workspace.bookmarked %}Yes{% else %}No{% endif %}
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% if forloop.counter|divisibleby:3 and not forloop.last %}
+    </div>
+    <div class="row">
+        {% endif %}
+        {% endfor %}
+    </div>
     {% else %}
     <p>No workspaces found yet.</p>
     {% endif %}
 </main>
+
+<!-- link to creation button script -->
+<script src="{% static 'scripts/workspace_script.js' %}"></script>
 {% endblock %}

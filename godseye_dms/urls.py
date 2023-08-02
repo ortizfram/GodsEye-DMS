@@ -24,6 +24,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.home, name="home"),
     path("workspaces/", views.workspace_list, name="workspaces"),
+    path("create_workspace/", views.create_workspace, name="create_workspace"),
 ]
 
 # Only enable serving media files during development
