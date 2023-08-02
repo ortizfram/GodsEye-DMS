@@ -25,6 +25,7 @@ urlpatterns = [
     path("", views.home, name="home"),
     path("workspaces/", views.workspace_list, name="workspaces"),
     path("create_workspace/", views.create_workspace, name="create_workspace"),
+    path("workspace_detail/", views.workspace_detail, name="workspace_detail"),
 ]
 
 # Only enable serving media files during development

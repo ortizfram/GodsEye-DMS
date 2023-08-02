@@ -1,0 +1,23 @@
+<!-- create_workspace.html -->
+
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+<main class="container">
+    <h1 class="display-5 text-center custom-font">Create Workspace 💼</h1>
+    <form id="createWorkspaceForm" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="title">Title:</label>
+        <input type="text" name="title" required>
+
+        <label for="logo">Logo:</label>
+        <input type="file" name="logo" accept="image/*">
+        <span class="emoji-placeholder">👁️</span>
+
+        <button type="submit">Create Workspace</button>
+    </form>
+</main>
+
+<script src="{% static 'workspace_script.js' %}"></script>
+{% endblock %}

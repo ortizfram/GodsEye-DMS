@@ -9,7 +9,7 @@
     <div class="grid d-flex gap-3">
         <div class="row">
             <!-- Button show/hide workspace creation form -->
-            <button id="toggleCreateFormBtn" class="btn btn-secondary">
+            <button id="toggleCreateFormBtn" href="{% url 'create_workspace' %}" class="btn btn-secondary">
                 +
             </button>
             <!-- Button show/hide workspace Edit form -->
@@ -17,17 +17,12 @@
         </div>
     </div>
 
-    <!-- ||| workspace creation form -->
-    <div id="createWorkspaceFormContainer" style="display: none;">
-        {% include 'workspace_form.html' %}
-    </div>
-
     <!-- ||| Render workspaces -->
     {% if workspaces %}
     <div class="row">
         {% for workspace in workspaces %}
         <div class="col-12 col-sm-6 col-md-4">
-            <a class="card card-body" href="#">
+            <a class="card card-body" href="{% url 'workspace_detail' %}">
                 <div class="row align-items-center">
                     <div class="col-12 col-md-2">
                         {% if workspace.logo %}
@@ -56,6 +51,4 @@
     {% endif %}
 </main>
 
-<!-- link to creation button script -->
-<script src="{% static 'scripts/workspace_script.js' %}"></script>
 {% endblock %}

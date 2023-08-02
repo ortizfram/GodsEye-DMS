@@ -14,6 +14,9 @@ def workspace_list(request):
     workspaces = Workspace.objects.all()
     return render(request, 'workspace.html', {'workspaces': workspaces})
 
+def workspace_detail(request):
+    return render(request, 'workspace_detail.html')
+
 def create_workspace(request):
     if request.method == "POST":
         title = request.POST.get("title")
@@ -23,6 +26,6 @@ def create_workspace(request):
         workspace = Workspace(title=title, logo=logo)
         workspace.save()
 
-        return redirect("workspaces")
+        return redirect("workspace_list")
     else:
-        return JsonResponse({"status":"error", "message":"Invalid request method."})
+        return render(request, "create_workspace.html")
